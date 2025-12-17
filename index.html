@@ -104,6 +104,30 @@ button {
 
 <button type="button" onclick="calculateScore()">Submit Test</button>
 
+</form>
+
+<h2 id="result"></h2>
+
+<div class="question">
+  <p>1. What number comes next: 2, 4, 8, 16, ?</p>
+  <input type="radio" name="q1" value="correct"> 32<br>
+  <input type="radio" name="q1"> 24<br>
+  <input type="radio" name="q1"> 20<br>
+</div>
+
+<div class="question">
+  <p>2. Which shape does not belong?</p>
+  <input type="radio" name="q2"> Square<br>
+  <input type="radio" name="q2" value="correct"> Triangle<br>
+  <input type="radio" name="q2"> Circle<br>
+</div>
+
+<button type="button" onclick="calculateScore()">Submit</button>
+
+</form>
+
+<h2 id="result"></h2>
+
 <script>
 let timeLeft = 300;
 const timerEl = document.getElementById("timer");
@@ -145,6 +169,7 @@ const timer = setInterval(() => {
     `You scored ${score}/${totalQuestions}.
      Estimated IQ range: ${iq}`;
 }
+</script>
 </script>
 
 </body>
