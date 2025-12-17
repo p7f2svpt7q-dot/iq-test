@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Free IQ Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: auto;
+      padding: 20px;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Free IQ Test</h1>
+<p>Select the correct answers below.</p>
+
+<form id="iqTest">
+
+<div class="question">
+  <p>1. What number comes next: 2, 4, 8, 16, ?</p>
+  <input type="radio" name="q1" value="correct"> 32<br>
+  <input type="radio" name="q1"> 24<br>
+  <input type="radio" name="q1"> 20<br>
+</div>
+
+<div class="question">
+  <p>2. Which shape does not belong?</p>
+  <input type="radio" name="q2"> Square<br>
+  <input type="radio" name="q2" value="correct"> Triangle<br>
+  <input type="radio" name="q2"> Circle<br>
+</div>
+
+<button type="button" onclick="calculateScore()">Submit</button>
+
+</form>
+
+<h2 id="result"></h2>
+
+<script>
+function calculateScore() {
+  let score = 0;
+  const answers = document.querySelectorAll('input[value="correct"]:checked');
+  score = answers.length;
+
+  let iq;
+  if (score === 2) iq = "130+";
+  else if (score === 1) iq = "100–115";
+  else iq = "Below 100";
+
+  document.getElementById("result").innerText =
+    "You answered " + score + "/2 correctly. Estimated IQ: " + iq;
+}
+</script>
+
+</body>
+</html>
+
+
