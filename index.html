@@ -84,6 +84,29 @@
 
 <script>
 function calculateScore() {
+  const inputs = document.querySelectorAll('input[type="radio"]:checked');
+  let score = 0;
+
+  inputs.forEach(input => {
+    score += parseInt(input.value);
+  });
+
+  const totalQuestions = 4;
+  const percentage = (score / totalQuestions) * 100;
+
+  let iq;
+  if (percentage >= 90) iq = "130+ (Very High)";
+  else if (percentage >= 75) iq = "115–129 (Above Average)";
+  else if (percentage >= 50) iq = "90–114 (Average)";
+  else iq = "Below 90";
+
+  document.getElementById("result").innerText =
+    `You scored ${score}/${totalQuestions}.
+     Estimated IQ range: ${iq}`;
+}
+</script>
+
+function calculateScore() {
   let score = 0;
   const answers = document.querySelectorAll('input[value="correct"]:checked');
   score = answers.length;
