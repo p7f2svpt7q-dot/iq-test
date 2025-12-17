@@ -74,37 +74,48 @@ button {
 <p id="timer">Time remaining: 5:00</p>
 
   <form id="iqTest">
+ 
+  </form>
+    <script>
 
-<div class="question">
-  <p>1. What number comes next: 2, 4, 8, 16, ?</p>
-  <label><input type="radio" name="q1" value="1"> 32</label><br>
-  <label><input type="radio" name="q1" value="0"> 24</label><br>
-  <label><input type="radio" name="q1" value="0"> 20</label>
-</div>
-
-<div class="question">
-  <p>2. Which word does NOT belong?</p>
-  <label><input type="radio" name="q2" value="0"> Apple</label><br>
-  <label><input type="radio" name="q2" value="0"> Banana</label><br>
-  <label><input type="radio" name="q2" value="1"> Car</label>
-</div>
-
-<div class="question">
-  <p>3. If all Bloops are Razzies and all Razzies are Lazzies, are all Bloops Lazzies?</p>
-  <label><input type="radio" name="q3" value="1"> Yes</label><br>
-  <label><input type="radio" name="q3" value="0"> No</label>
-</div>
-
-<div class="question">
-  <p>4. Which shape completes the pattern?</p>
-  <label><input type="radio" name="q4" value="1"> Triangle</label><br>
-  <label><input type="radio" name="q4" value="0"> Square</label><br>
-  <label><input type="radio" name="q4" value="0"> Circle</label>
-</div>
-
-<button type="button" onclick="calculateScore()">Submit Test</button>
-
-<script>
+const questions = [
+  {
+    question: "Which number completes the sequence: 3, 6, 18, 72, ?",
+    options: ["144", "216", "360", "432"],
+    answer: 1,
+    explanation: "Each number is multiplied by increasing integers: ×2, ×3, ×4, ×5."
+  },
+  {
+    question: "All Zargs are Blips. Some Blips are Torks. Which statement must be true?",
+    options: [
+      "All Zargs are Torks",
+      "Some Zargs may be Torks",
+      "No Zargs are Torks",
+      "All Blips are Zargs"
+    ],
+    answer: 1,
+    explanation: "Since some Blips are Torks and all Zargs are Blips, overlap is possible but not guaranteed."
+  },
+  {
+    question: "If you rearrange the letters 'CIFAIPC', you get the name of a:",
+    options: ["City", "Ocean", "Animal", "Country"],
+    answer: 3,
+    explanation: "Rearranged, it spells 'PACIFIC'."
+  },
+  {
+    question: "Which figure logically completes the pattern?",
+    options: ["Triangle", "Square", "Pentagon", "Hexagon"],
+    answer: 2,
+    explanation: "The pattern increases by one side each step."
+  },
+  {
+    question: "A bat and a ball cost $1.10 total. The bat costs $1 more than the ball. How much is the ball?",
+    options: ["$0.05", "$0.10", "$0.15", "$0.20"],
+    answer: 0,
+    explanation: "If the ball is $0.05, the bat is $1.05 = $1.10 total."
+  }
+];
+  <script>
 let timeLeft = 300;
 const timerEl = document.getElementById("timer");
 
