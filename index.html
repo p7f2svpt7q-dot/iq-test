@@ -129,7 +129,26 @@ button {
 <h2 id="result"></h2>
 
 <script>
-function calculateScore() {
+let timeLeft = 300;
+const timerEl = document.getElementById("timer");
+
+const timer = setInterval(() => {
+  timeLeft--;
+
+  const minutes = Math.floor(timeLeft / 60);
+  const seconds = timeLeft % 60;
+  timerEl.textContent = `Time remaining: ${minutes}:${seconds.toString().padStart(2, '0')}`;
+
+  const progress = ((300 - timeLeft) / 300) * 100;
+  document.getElementById("progress-bar").style.width = progress + "%";
+
+  if (timeLeft <= 0) {
+    clearInterval(timer);
+    calculateScore();
+  }
+}, 1000);
+  
+  function calculateScore() {
   const inputs = document.querySelectorAll('input[type="radio"]:checked');
   let score = 0;
 
