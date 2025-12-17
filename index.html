@@ -8,6 +8,46 @@
 </p>
   <style>
     body {
+  background-color: #f4f6f8;
+}
+
+.disclaimer {
+  font-size: 0.9em;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.question {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.progress-container {
+  width: 100%;
+  background: #ddd;
+  height: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+#progress-bar {
+  height: 10px;
+  width: 0%;
+  background: #2563eb;
+  border-radius: 5px;
+}
+
+    body {
       font-family: Arial, sans-serif;
       max-width: 700px;
       margin: auto;
@@ -27,7 +67,13 @@
 <h1>Free IQ Test</h1>
 <p>Select the correct answers below.</p>
 
-<form id="iqTest">
+<div class="progress-container">
+  <div id="progress-bar"></div>
+</div>
+
+<p id="timer">Time remaining: 5:00</p>
+
+  <form id="iqTest">
 
 <div class="question">
   <p>1. What number comes next: 2, 4, 8, 16, ?</p>
