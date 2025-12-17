@@ -1,113 +1,154 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>IQ Quiz</title>
+  <title>Free IQ Test</title>
+  <p class="disclaimer">
+  This test is for entertainment and educational purposes only.
+  It is not a professional or clinical IQ assessment.
+</p>
   <style>
-    #progress-container {
-      width: 100%;
-      background-color: #ddd;
+    body {
+  background-color: #f4f6f8;
+}
+
+.disclaimer {
+  font-size: 0.9em;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.question {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.progress-container {
+  width: 100%;
+  background: #ddd;
+  height: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+#progress-bar {
+  height: 10px;
+  width: 0%;
+  background: #2563eb;
+  border-radius: 5px;
+}
+
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: auto;
+      padding: 20px;
     }
-    #progress-bar {
-      width: 0%;
-      height: 20px;
-      background-color: #4caf50;
+    .question {
+      margin-bottom: 20px;
     }
-    #timer {
-      font-weight: bold;
-      margin: 10px 0;
-    }
-    #result {
-      margin-top: 20px;
-      font-size: 18px;
-      font-weight: bold;
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
     }
   </style>
 </head>
 <body>
-  <h1>IQ Quiz</h1>
-  <div id="timer">Time remaining: 5:00</div>
-  <div id="progress-container">
-    <div id="progress-bar"></div>
-  </div>
 
-  <form id="quiz-form">
-    <div>
-      <p>Question 1: Which statement is correct?</p>
-      <label><input type="radio" name="q1" value="0"> All Zargs are Torks</label><br>
-      <label><input type="radio" name="q1" value="1"> Some Zargs may be Torks</label><br>
-      <label><input type="radio" name="q1" value="0"> No Zargs are Torks</label><br>
-      <label><input type="radio" name="q1" value="0"> All Blips are Zargs</label>
-    </div>
+<h1>Free IQ Test</h1>
+<p>Select the correct answers below.</p>
 
-    <div>
-      <p>Question 2: If you rearrange the letters 'CIFAIPC', you get the name of a:</p>
-      <label><input type="radio" name="q2" value="0"> City</label><br>
-      <label><input type="radio" name="q2" value="0"> Ocean</label><br>
-      <label><input type="radio" name="q2" value="0"> Animal</label><br>
-      <label><input type="radio" name="q2" value="1"> Country</label>
-    </div>
+<div class="progress-container">
+  <div id="progress-bar"></div>
+</div>
 
-    <div>
-      <p>Question 3: Which figure logically completes the pattern?</p>
-      <label><input type="radio" name="q3" value="0"> Triangle</label><br>
-      <label><input type="radio" name="q3" value="0"> Square</label><br>
-      <label><input type="radio" name="q3" value="1"> Pentagon</label><br>
-      <label><input type="radio" name="q3" value="0"> Hexagon</label>
-    </div>
+<p id="timer">Time remaining: 5:00</p>
 
-    <div>
-      <p>Question 4: A bat and a ball cost $1.10 total. The bat costs $1 more than the ball. How much is the ball?</p>
-      <label><input type="radio" name="q4" value="1"> $0.05</label><br>
-      <label><input type="radio" name="q4" value="0"> $0.10</label><br>
-      <label><input type="radio" name="q4" value="0"> $0.15</label><br>
-      <label><input type="radio" name="q4" value="0"> $0.20</label>
-    </div>
+  <form id="iqTest">
 
-    <button type="button" onclick="calculateScore()">Submit</button>
-  </form>
+<div class="question">
+  <p>1. What number comes next: 2, 4, 8, 16, ?</p>
+  <label><input type="radio" name="q1" value="1"> 32</label><br>
+  <label><input type="radio" name="q1" value="0"> 24</label><br>
+  <label><input type="radio" name="q1" value="0"> 20</label>
+</div>
 
-  <div id="result"></div>
+<div class="question">
+  <p>2. Which word does NOT belong?</p>
+  <label><input type="radio" name="q2" value="0"> Apple</label><br>
+  <label><input type="radio" name="q2" value="0"> Banana</label><br>
+  <label><input type="radio" name="q2" value="1"> Car</label>
+</div>
 
-  <script>
-    let timeLeft = 300;
-    const timerEl = document.getElementById("timer");
+<div class="question">
+  <p>3. If all Bloops are Razzies and all Razzies are Lazzies, are all Bloops Lazzies?</p>
+  <label><input type="radio" name="q3" value="1"> Yes</label><br>
+  <label><input type="radio" name="q3" value="0"> No</label>
+</div>
 
-    const timer = setInterval(() => {
-      timeLeft--;
+<div class="question">
+  <p>4. Which shape completes the pattern?</p>
+  <label><input type="radio" name="q4" value="1"> Triangle</label><br>
+  <label><input type="radio" name="q4" value="0"> Square</label><br>
+  <label><input type="radio" name="q4" value="0"> Circle</label>
+</div>
 
-      const minutes = Math.floor(timeLeft / 60);
-      const seconds = timeLeft % 60;
-      timerEl.textContent = `Time remaining: ${minutes}:${seconds.toString().padStart(2, '0')}`;
+<button type="button" onclick="calculateScore()">Submit Test</button>
 
-      const progress = ((300 - timeLeft) / 300) * 100;
-      document.getElementById("progress-bar").style.width = progress + "%";
+<script>
+let timeLeft = 300;
+const timerEl = document.getElementById("timer");
 
-      if (timeLeft <= 0) {
-        clearInterval(timer);
-        calculateScore();
-      }
-    }, 1000);
+const timer = setInterval(() => {
+  timeLeft--;
 
-    function calculateScore() {
-      const inputs = document.querySelectorAll('input[type="radio"]:checked');
-      let score = 0;
+  const minutes = Math.floor(timeLeft / 60);
+  const seconds = timeLeft % 60;
+  timerEl.textContent = `Time remaining: ${minutes}:${seconds.toString().padStart(2, '0')}`;
 
-      inputs.forEach(input => {
-        score += parseInt(input.value);
-      });
+  const progress = ((300 - timeLeft) / 300) * 100;
+  document.getElementById("progress-bar").style.width = progress + "%";
 
-      const totalQuestions = 4;
-      const percentage = (score / totalQuestions) * 100;
+  if (timeLeft <= 0) {
+    clearInterval(timer);
+    calculateScore();
+  }
+}, 1000);
+  
+  function calculateScore() {
+  const inputs = document.querySelectorAll('input[type="radio"]:checked');
+  let score = 0;
 
-      let iq;
-      if (percentage >= 90) iq = "130+ (Very High)";
-      else if (percentage >= 75) iq = "115–129 (Above Average)";
-      else if (percentage >= 50) iq = "90–114 (Average)";
-      else iq = "Below 90";
+  inputs.forEach(input => {
+    score += parseInt(input.value);
+  });
 
-      document.getElementById("result").innerText =
-        `You scored ${score}/${totalQuestions}. Estimated IQ range: ${iq}`;
+  const totalQuestions = 4;
+  const percentage = (score / totalQuestions) * 100;
+
+  let iq;
+  if (percentage >= 90) iq = "130+ (Very High)";
+  else if (percentage >= 75) iq = "115–129 (Above Average)";
+  else if (percentage >= 50) iq = "90–114 (Average)";
+  else iq = "Below 90";
+
+  document.getElementById("result").innerText =
+    `You scored ${score}/${totalQuestions}.
+     Estimated IQ range: ${iq}`;
+}
+</script>
+
+</body>
+</html>
     }
   </script>
 </body>
