@@ -170,20 +170,6 @@ const timer = setInterval(() => {
      Estimated IQ range: ${iq}`;
 }
 </script>
-
-function calculateScore() {
-  let score = 0;
-  const answers = document.querySelectorAll('input[value="correct"]:checked');
-  score = answers.length;
-
-  let iq;
-  if (score === 2) iq = "130+";
-  else if (score === 1) iq = "100–115";
-  else iq = "Below 100";
-
-  document.getElementById("result").innerText =
-    "You answered " + score + "/2 correctly. Estimated IQ: " + iq;
-}
 </script>
 
 </body>
